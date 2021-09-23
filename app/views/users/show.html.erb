@@ -45,9 +45,6 @@
       </table>
 
 
-
-
-
       <h2>投稿数の前日比・前週比</h2>
       <table class='table table-hover table-inverse'>
           <thead>
@@ -144,6 +141,17 @@
           },
        });
     </script>
+    
+      <%= form_with url: user_search_path(@user), method: :get do |f| %>
+        <%= f.date_field :created_at %>
+        <%= f.submit '検索', class: 'btn btn-primary'  %>
+      <% end %>
+
+      <div id="search_result">
+       <% if @search_book.present? %>
+         <%= render 'users/search', search_book: @search_book %>
+       <% end %>
+      </div>
 
 
 
